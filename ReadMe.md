@@ -25,4 +25,4 @@ yarn start
 
 ### 配置信息
 - 页面 Layout 采用基本的 BasicLayout 布局
-- 路由配置位于 `.umi.js` 文件中
+- 路由配置位于 `.umirc.js` 文件中
