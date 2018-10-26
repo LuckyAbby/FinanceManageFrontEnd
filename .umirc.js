@@ -15,4 +15,23 @@ export default {
       hardSource: true,
     }],
   ],
+  routes: [{
+    path: '/',
+    component: '../layouts',
+    routes: [
+      {
+        path: '/',
+        component: 'Product',
+      }, {
+        path: '/assets',
+        component: 'Assets',
+      }, {
+        path: '/details',
+        component: 'Details',
+      }, {
+        path: '/userInfo',
+        component: 'UserInfo',
+      },
+    ]
+  }],
 }
