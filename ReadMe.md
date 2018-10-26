@@ -4,6 +4,8 @@
 ```
 git clone https://github.com/LuckyAbby/FinanceManageFrontEnd.git
 
+cd FinanceManageFrontEnd
+
 yarn
 
 yarn start
