@@ -19,7 +19,10 @@ export default class Product extends Component {
   columns = [{
     title: '基金名称',
     dataIndex: 'name',
-    key: 'name'
+    key: 'name',
+    render: (text, record) => {
+      return <a href="#">{text}</a>
+    }
   }, {
     title: '近七日年化',
     dataIndex: 'dividend',

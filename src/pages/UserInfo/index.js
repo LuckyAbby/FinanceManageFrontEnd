@@ -1,3 +1,7 @@
+import { Divider } from "antd";
+
 export default () => {
-  return <h1>UserInfo Page</h1>
+  return <div>
+    <h1>实名信息</h1>
+  </div>
 };

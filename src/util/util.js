@@ -2,12 +2,14 @@ import React from 'react'
 
 
 export default {
+
+
     /**
-         * 在record所有字段中搜索并返回filter数组
-         * 
-         * @param {any} originList 
-         * @param {any} text 
-         */
+     * 在record所有字段中搜索并返回filter数组
+     * 
+     * @param {any} originList 
+     * @param {any} text 
+     */
     searchText(originList, text, columnList) {
         let filter = [];
 
