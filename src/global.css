@@ -15,3 +15,10 @@ body {
   color: red;
   transform: scale(1.2);
 }
+.mt10{
+  margin-top: 10px;
+}
+.ml10{
+  margin-left: 10px;
+}
+
