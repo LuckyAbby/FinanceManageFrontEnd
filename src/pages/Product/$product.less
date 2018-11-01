@@ -1,0 +1,32 @@
+.product{
+    display: flex;
+    // flex-direction: column;
+    
+
+    .graph{
+        flex-grow: 4;
+        height: 300px;
+        background: grey;
+    }
+
+    .info{
+        flex-grow: .5;
+        padding-right: 20px; 
+    }
+
+}
+
+.row{
+    margin-top: 10px;
+    .key{
+        font-weight: bold;
+        &::after{
+            content: ":";
+        }
+    }
+    
+    .value{
+        display: inline-block;
+        margin-left: 20px;
+    }
+}

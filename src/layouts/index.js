@@ -11,18 +11,22 @@ export default class BasicLayout extends Component {
 
   menuMap = [{
     route: "/",
+    pattern: /(^\/$)|(^\/product)/,
     icon: "info-circle",
     text: "产品介绍"
   }, {
     route: "/assets",
+    pattern: /^\/assets/,
     icon: "property-safety",
     text: "我的资产"
   }, {
     route: "/details",
+    pattern: /^\/details/,
     icon: "table",
     text: "交易明细"
   }, {
     route: "/userInfo",
+    pattern: /^\/userInfo/,
     icon: "user",
     text: "个人信息"
   }]
@@ -38,7 +42,7 @@ export default class BasicLayout extends Component {
     }
 
     return this.menuMap.findIndex(item => {
-      return item.route === pathname
+      return item.pattern.exec(pathname) != null
     }) + ""
   }
 

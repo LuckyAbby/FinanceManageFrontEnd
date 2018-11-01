@@ -23,6 +23,9 @@ export default {
         path: '/',
         component: 'Product',
       }, {
+        path: '/product/:id',
+        component: 'Product/$product.js',
+      }, {
         path: '/assets',
         component: 'Assets',
       }, {

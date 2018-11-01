@@ -52,8 +52,9 @@ export default class LocationPicker extends Component {
                 style={{ width }}
                 placeholder="请选择省市"
                 onChange={(value) => {
-                    this.setState({ provinceCity: value.join("") });
-                    this.triggerOnChange();
+                    this.setState({ provinceCity: value.join("") },()=>{
+                        this.triggerOnChange();
+                    });
                 }}
                 options={this.getCascaderOption()} />
             <Input
@@ -62,8 +63,9 @@ export default class LocationPicker extends Component {
                     marginTop: 10
                 }}
                 onChange={(event) => {
-                    this.setState({ detailLocation: event.target.value });
-                    this.triggerOnChange();
+                    this.setState({ detailLocation: event.target.value },()=>{
+                        this.triggerOnChange();
+                    });
                 }}
                 placeholder="请输入详细地址"
             />

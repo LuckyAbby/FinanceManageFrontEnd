@@ -21,7 +21,7 @@ export default class Product extends Component {
     dataIndex: 'name',
     key: 'name',
     render: (text, record) => {
-      return <a href="#">{text}</a>
+      return <a href="/product/123">{text}</a>
     }
   }, {
     title: '近七日年化',
