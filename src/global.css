@@ -6,3 +6,19 @@ html, body, #root {
 body {
   margin: 0;
 }
+
+.red{
+  color: red;
+}
+
+.hignlight{
+  color: red;
+  transform: scale(1.2);
+}
+.mt10{
+  margin-top: 10px;
+}
+.ml10{
+  margin-left: 10px;
+}
+
