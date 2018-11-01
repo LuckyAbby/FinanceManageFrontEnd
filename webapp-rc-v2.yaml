@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: webapp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: webapp
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: tomcat
+        image: demo:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MYSQL_SERVICE_HOST
+          value: 'mysql'
+        - name: MYSQL_SERVICE_PORT
+          value: '3306'
+      - name: front
+        image: front:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8888
