@@ -1,47 +1,58 @@
 import React, { Component } from 'react';
 import { Table, Button, Input } from 'antd'
+import { connect } from 'dva';
 import _ from '../../util/util'
 
 import styles from './index.less'
 
-export default class Product extends Component {
 
-  constructor() {
-    super();
+function mapPropsToState(state) {
+  return {
+    list: state.product.list
+  }
+}
+
+class Product extends Component {
+
+  constructor(props) {
+    super(props);
 
     this.state = {
-      dataFilter: this.dataSource
+      dataFilter: props.list
     }
 
     this.onSearch = this.onSearch.bind(this);
   }
 
   columns = [{
-    title: '基金名称',
-    dataIndex: 'name',
-    key: 'name',
+    title: '产品名称',
+    dataIndex: 'productName',
+    key: 'productName',
     render: (text, record) => {
       return <a href="/product/123">{text}</a>
     }
   }, {
+    title: '产品类型',
+    dataIndex: 'productType',
+    key: 'productType'
+  }, {
+    title: '购买方式',
+    dataIndex: 'productTerm',
+    key: 'productTerm'
+  }, {
     title: '近七日年化',
-    dataIndex: 'dividend',
-    key: 'dividend',
-    sorter: (a, b) => a.dividend - b.dividend,
+    dataIndex: 'sevenRate',
+    key: 'sevenRate',
     render: (text) => {
       return <span className="red">{
-        text + "%"
+        text
       }</span>
     }
   }, {
     title: '万份收益（元）',
-    dataIndex: 'gains',
-    key: 'gains',
-    sorter: (a, b) => a.gains - b.gains,
-  }, {
-    title: '期限',
-    dataIndex: 'expireDate',
-    key: 'expireDate'
+    dataIndex: 'dividedIncome',
+    key: 'dividedIncome',
+    sorter: (a, b) => a.dividedIncome - b.dividedIncome,
   }, {
     title: '',
     dataIndex: 'action',
@@ -53,25 +64,23 @@ export default class Product extends Component {
     }
   }]
 
-  dataSource = [{
-    key: 1,
-    name: "华夏财富宝",
-    dividend: 3.0560,
-    gains: 0.9465,
-    expireDate: "随买随取"
-  }, {
-    key: 2,
-    name: "天弘财富宝",
-    dividend: 3.721,
-    gains: 0.9777,
-    expireDate: "随买随取"
-  }]
+  componentWillReceiveProps(nextProps) {
+    const { list } = nextProps;
+
+    console.log(list)
+
+    this.setState({
+      dataFilter: list
+    })
+  }
 
 
   onSearch(event) {
+    const { list } = this.props;
+
     const text = event.target.value;
     this.setState({
-      dataFilter: _.searchText(this.dataSource, text, "name")
+      dataFilter: _.searchText(list, text, "productName")
     })
   }
 
@@ -91,3 +100,6 @@ export default class Product extends Component {
     </div>
   }
 }
+
+
+export default connect(mapPropsToState)(Product)

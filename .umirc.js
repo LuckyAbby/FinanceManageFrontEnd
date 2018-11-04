@@ -15,6 +15,13 @@ export default {
       hardSource: true,
     }],
   ],
+  proxy: {
+    "/api": {
+      "target": "http://182.254.137.15:8080/finance/product/",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api": "" }
+    }
+  },
   routes: [{
     path: '/',
     component: '../layouts',

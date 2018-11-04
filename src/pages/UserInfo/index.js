@@ -6,8 +6,8 @@ import { LocationPicker } from '../../components'
 
 export default class UserInfo extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.submitLocation = this.submitLocation.bind(this);
     this.submitEmail = this.submitEmail.bind(this);

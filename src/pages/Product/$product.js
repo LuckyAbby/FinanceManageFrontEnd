@@ -5,8 +5,8 @@ import { InputNumber, Button, Divider } from 'antd';
 
 export default class ProductDetail extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
 
     }
