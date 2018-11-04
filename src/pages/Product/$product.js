@@ -1,20 +1,27 @@
 import React, { Component } from 'react'
-
+import { connect } from 'dva';
 import styles from './$product.less'
 import { InputNumber, Button, Divider } from 'antd';
 import { DividendChart } from '../../components'
 
 
-export default class ProductDetail extends Component {
+function mapPropsToState(state) {
+    return {
+        detail: state.product.detail,
+        dividendList: state.product.dividendList
+    }
+}
+
+class ProductDetail extends Component {
 
     constructor(props) {
         super(props);
-
 
     }
 
 
     render() {
+        const { dividendList, detail } = this.props;
 
         return <div className={styles.product}>
             <div className={styles.info}>
@@ -72,8 +79,13 @@ export default class ProductDetail extends Component {
                 </div>
             </div>
             <div className={styles.graph}>
-                <DividendChart />
+                <DividendChart
+                    data={dividendList}
+                />
             </div>
         </div>
     }
 }
+
+
+export default connect(mapPropsToState)(ProductDetail)

@@ -5,7 +5,8 @@ export default {
 
     state: {
         list: [],
-        detail: {}
+        detail: {},
+        dividendList: []
     },
 
     subscriptions: {
@@ -13,7 +14,18 @@ export default {
             return history.listen(({ pathname }) => {
                 if (pathname === '/') {
                     dispatch({ type: 'getList' })
+                } else {
+                    const match = /^\/product\/(.*)$/.exec(pathname)
+                    if (match && match[1]) {
+                        dispatch({
+                            type: 'getDividendList',
+                            payload: {
+                                fpid: match[1]
+                            }
+                        })
+                    }
                 }
+
             })
         },
     },
@@ -26,6 +38,13 @@ export default {
                 payload: list
             })
         },
+        *getDividendList({ payload }, { call, put, select }) {
+            let list = yield call(service.getDividendList, payload.fpid)
+            yield put({
+                type: "updateDividendList",
+                payload: list
+            })
+        }
     },
 
     reducers: {
@@ -36,6 +55,18 @@ export default {
                 return {
                     ...state,
                     list: payload
+                };
+            }
+            return state;
+
+        },
+        // 更新表格
+        updateDividendList(state, { payload }) {
+            // 判断是不是数组
+            if (payload && payload.join) {
+                return {
+                    ...state,
+                    dividendList: payload
                 };
             }
             return state;
