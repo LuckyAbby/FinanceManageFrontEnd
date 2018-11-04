@@ -4,7 +4,6 @@ import { Card, Button, message } from 'antd';
 import styles from './index.less'
 
 
-
 const mapStateToProps = ({ assets }) => ({
   assets
 });
@@ -24,7 +23,6 @@ class Assets extends Component {
     this.props.dispatcher.assets.fetch();
   }
   onSale = (key) => {
-    console.log('key', key);
     this.props.dispatcher.assets.sale(key, () => {
       message.success('卖出成功');
       this.props.dispatcher.assets.fetch();
@@ -33,7 +31,7 @@ class Assets extends Component {
   render() {
     const { assets } = this.props;
     const { list } = assets;
-    console.log('list is ', list);
+    // console.log('list is ', list);
     return (
       <div className={styles.container}>
         {list.length && list.map(item => 
