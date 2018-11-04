@@ -17,7 +17,7 @@ export default {
   ],
   proxy: {
     "/api": {
-      "target": "http://182.254.137.15:8080/finance/product/",
+      "target": "http://182.254.137.15:8080/finance/",
       "changeOrigin": true,
       "pathRewrite": { "^/api": "" }
     }

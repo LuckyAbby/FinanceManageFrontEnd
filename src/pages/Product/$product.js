@@ -25,13 +25,13 @@ class ProductDetail extends Component {
 
         return <div className={styles.product}>
             <div className={styles.info}>
-                <h1>华夏财富宝</h1>
+                <h1>{detail.productName}</h1>
                 <div className={styles.row}>
                     <span className={styles.key}>
                         万份收益
                     </span>
                     <span className={styles.value}>
-                        2%
+                        {detail.dividedIncome}
                     </span>
                 </div>
                 <div className={styles.row}>
@@ -39,7 +39,7 @@ class ProductDetail extends Component {
                         七日年化
                     </span>
                     <span className={styles.value}>
-                        2%
+                        {detail.sevenRate}
                     </span>
                 </div>
                 <div className={styles.row}>
@@ -47,15 +47,15 @@ class ProductDetail extends Component {
                         理财期限
                     </span>
                     <span className={styles.value}>
-                        随买随取
+                        {detail.productTerm}
                     </span>
                 </div>
                 <div className={styles.row}>
                     <span className={styles.key}>
-                        起购金额
+                        产品类型
                     </span>
                     <span className={styles.value}>
-                        0.01元
+                        {detail.productType}
                     </span>
                 </div>
                 <Divider />

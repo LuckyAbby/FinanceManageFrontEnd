@@ -23,6 +23,12 @@ export default {
                                 fpid: match[1]
                             }
                         })
+                        dispatch({
+                            type: 'getDetail',
+                            payload: {
+                                fpid: match[1]
+                            }
+                        })
                     }
                 }
 
@@ -35,6 +41,13 @@ export default {
             let list = yield call(service.getProductList)
             yield put({
                 type: "updateList",
+                payload: list
+            })
+        },
+        *getDetail({ payload }, { call, put, select }) {
+            let list = yield call(service.getProductDetail, payload.fpid)
+            yield put({
+                type: "updateDetail",
                 payload: list
             })
         },
