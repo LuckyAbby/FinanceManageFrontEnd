@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Button, Input } from 'antd'
 import { connect } from 'dva';
+import Link from 'umi/link';
 import _ from '../../util/util'
 
 import styles from './index.less'
@@ -29,7 +30,7 @@ class Product extends Component {
     dataIndex: 'productName',
     key: 'productName',
     render: (text, record) => {
-      return <a href="/product/123">{text}</a>
+      return <Link to={`/product/${record.fpid}`}>{text}</Link>
     }
   }, {
     title: '产品类型',
@@ -59,7 +60,7 @@ class Product extends Component {
     key: 'action',
     render: (text, record) => {
       return <Button type="primary">
-        买入
+        <Link to={`/product/${record.fpid}`}>买入</Link>
       </Button>
     }
   }]
