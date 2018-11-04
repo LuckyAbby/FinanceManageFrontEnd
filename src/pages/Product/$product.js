@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import styles from './$product.less'
 import { InputNumber, Button, Divider } from 'antd';
+import { DividendChart } from '../../components'
+
 
 export default class ProductDetail extends Component {
 
@@ -70,8 +72,7 @@ export default class ProductDetail extends Component {
                 </div>
             </div>
             <div className={styles.graph}>
-
-
+                <DividendChart />
             </div>
         </div>
     }
