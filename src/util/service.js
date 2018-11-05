@@ -1,6 +1,6 @@
 import fetch from 'dva/fetch';
 import { notification } from 'antd'
-const base = `/api`;
+const base = `http://182.254.137.15:8080/finance/`;
 
 function parseJSON(response) {
 
