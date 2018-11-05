@@ -16,3 +16,11 @@ export function getDividendList(fpid) {
         fpid
     }).then(data => (data.list))
 }
+
+export function buyProduct(uid, fpid, buyMoney) {
+    return service.post('/user/hold/buyProduct', {
+        uid,
+        fpid,
+        buyMoney
+    }).then(data => (data))
+}

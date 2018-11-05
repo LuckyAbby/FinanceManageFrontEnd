@@ -1,4 +1,5 @@
 import * as service from '../services/product'
+import { notification } from 'antd'
 
 export default {
     namespace: 'product',
@@ -51,6 +52,20 @@ export default {
                 payload: list
             })
         },
+        *buyProduct({ payload }, { call, put, select }) {
+            const uid = yield select(state => (state.user.currUid))
+            const fpid = yield select(state => (state.product.detail.fpid))
+
+
+            let data = yield call(service.buyProduct, uid, fpid, payload.buyMoney)
+            if (data) {
+                notification.info({
+                    message: `购买成功`
+                })
+            }
+
+
+        },
         *getDividendList({ payload }, { call, put, select }) {
             let list = yield call(service.getDividendList, payload.fpid)
             yield put({
@@ -65,6 +80,10 @@ export default {
         updateList(state, { payload }) {
             // 判断是不是数组
             if (payload && payload.join) {
+                payload = payload.map(item => ({
+                    ...item,
+                    key: item.fpid
+                }))
                 return {
                     ...state,
                     list: payload
