@@ -7,7 +7,7 @@ import _ from '../../util/util'
 import styles from './index.less'
 
 
-function mapPropsToState(state) {
+function mapStateToProps(state) {
   return {
     list: state.product.list
   }
@@ -103,4 +103,4 @@ class Product extends Component {
 }
 
 
-export default connect(mapPropsToState)(Product)
+export default connect(mapStateToProps)(Product)

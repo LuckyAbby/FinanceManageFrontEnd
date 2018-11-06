@@ -5,7 +5,7 @@ import { InputNumber, Button, Divider } from 'antd';
 import { DividendChart } from '../../components'
 
 
-const mapPropsToState = state => ({
+const mapStateToProps = state => ({
     detail: state.product.detail,
     dividendList: state.product.dividendList
 })
@@ -110,4 +110,4 @@ class ProductDetail extends Component {
 }
 
 
-export default connect(mapPropsToState, mapDispatchToProps)(ProductDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail)
