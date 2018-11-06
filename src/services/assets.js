@@ -4,8 +4,6 @@ export function getAssets(params) {
   return service.post('/user/hold/userholdByUID', params).then(data => (data))
 }
 
-export function saleAssets(fpid) {
-  return service.post('/user/hold/saleProduct', {
-    fpid
-  }).then(data => (data))
+export function saleAssets(params) {
+  return service.post('/user/hold/saleProduct', params).then(data => (data))
 }

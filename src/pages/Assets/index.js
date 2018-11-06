@@ -4,8 +4,9 @@ import { Card, Button, message } from 'antd';
 import styles from './index.less'
 
 
-const mapStateToProps = ({ assets }) => ({
-  assets
+const mapStateToProps = ({ assets, user }) => ({
+  assets,
+  user,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -20,17 +21,27 @@ const mapDispatchToProps = dispatch => ({
 
 class Assets extends Component {
   componentDidMount = () => {
-    this.props.dispatcher.assets.fetch();
+    const { user } = this.props;
+    const { currUid } = user;
+    console.log('curr', currUid)
+    this.props.dispatcher.assets.fetch({ uid: currUid });
   }
-  onSale = (key) => {
-    this.props.dispatcher.assets.sale(key, () => {
+  onSale = (fpid, currUid, buyMoney) => {
+    console.log(fpid, currUid);
+    const sendData = {
+      fpid,
+      uid: currUid,
+      buyMoney,
+    }
+    this.props.dispatcher.assets.sale(sendData, () => {
       message.success('卖出成功');
-      this.props.dispatcher.assets.fetch();
+      this.props.dispatcher.assets.fetch({uid: currUid});
     });
   }
   render() {
-    const { assets } = this.props;
+    const { assets, user } = this.props;
     const { list } = assets;
+    const { currUid } = user;
     // console.log('list is ', list);
     return (
       <div className={styles.container}>
@@ -39,7 +50,7 @@ class Assets extends Component {
             className={styles.card}
             key={item.fpid}
             title={item.productName}
-            extra={<Button type="primary" size="small" onClick={() => this.onSale(item.fpid)}>卖出</Button>}
+            extra={<Button type="primary" size="small" onClick={() => this.onSale(item.fpid, currUid, item.holdMoney)}>卖出</Button>}
           >
             <div className={styles.itemContainer}>
               <div className={styles.itemDiv}>

@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "echarts": "^4.2.0-rc.2",
-    "echarts-for-react": "^2.0.15-beta.0"
+    "echarts-for-react": "^2.0.15-beta.0",
+    "lodash": "^4.17.11"
   }
 }
