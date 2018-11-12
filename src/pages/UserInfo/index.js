@@ -37,14 +37,6 @@ class UserInfo extends Component {
         <span className={styles.key}>证件号码</span>
         <span className={styles.value}>{detail.idCard}</span>
       </div>
-      <div className={styles.row}>
-        <span className={styles.key}>手机号码</span>
-        <span className={styles.value}>{detail.phone}</span>
-      </div>
-      <div className={styles.row}>
-        <span className={styles.key}>电子右键</span>
-        <span className={styles.value}>{detail.email}</span>
-      </div>
     </div>
   }
 }
